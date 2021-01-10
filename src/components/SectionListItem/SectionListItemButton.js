@@ -1,10 +1,12 @@
 // import hexRgb from 'hex-rgb'
-import { Box, Button, Stack, Text } from 'grommet'
+import { ProgressiveButton } from '../buttons'
 // import { colors } from '../../theme-custom'
 
 export const SectionListItemButton = ({ ...props }) => {
   return (
-    <Button
+    <ProgressiveButton
+      // height={{ min: 52 }}
+      // width={{ min: 52 }}
       plain={false}
       // primary
       {...props}

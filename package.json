@@ -1,5 +1,5 @@
 {
-  "name": "octocrm2",
+  "name": "octocrm",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -7,6 +7,8 @@
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
     "date-fns": "^2.16.1",
+    "firebase": "^8.2.1",
+    "framer-motion": "^3.1.4",
     "grommet": "^2.16.2",
     "grommet-icons": "^4.5.0",
     "hex-rgb": "^4.2.0",
@@ -22,7 +24,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "deploy-functions": "firebase deploy --only functions",
+    "functions:log": "firebase functions:log"
   },
   "eslintConfig": {
     "extends": [
@@ -41,5 +45,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "frontback-shared": "./functions/src/frontback-shared",
+    "typescript": "^4.1.3"
   }
 }

@@ -3,6 +3,7 @@ import { ThisMonthSection } from './ThisMonthSection'
 import { ReviewsSection } from './ReviewsSection'
 import { VisitsSection } from './VisitsSection'
 import * as routes from '../../routes'
+// import { ScreenCenterProgress } from '../../layout'
 
 const PLACE_ID = 'tB2oNxV24u25Ba1wGwZz' // #testing
 
@@ -32,13 +33,14 @@ const historyTabsParams = {
 export const PartnerDashboardScreen = () => {
   return (
     <Box gap="large" margin={{ vertical: 'xlarge' }}>
-      <ThisMonthSection title="В этом месяце" />
+      {/* <ThisMonthSection title="В этом месяце" />
       <ReviewsSection
         title="Отзывы"
         isSectionDisabled
         tabsParams={reviewsTabsParams}
-      />
+      /> */}
       <VisitsSection title="Визиты" tabsParams={historyTabsParams} />
     </Box>
   )
+  // return <ScreenCenterProgress />
 }

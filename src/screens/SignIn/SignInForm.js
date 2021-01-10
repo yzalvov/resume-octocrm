@@ -1,7 +1,8 @@
 import { Box, Form } from 'grommet'
-import { Button } from '../../components/index'
+import { ProgressiveButton } from '../../components/index'
 import { FormInput } from './FormInput'
 import { useSignInFormFacade } from './useSignInFormFacade'
+import { SignInErrorNotification } from './SignInErrorNotification'
 
 export const SignInForm = ({ buttonSize }) => {
   const {
@@ -10,6 +11,8 @@ export const SignInForm = ({ buttonSize }) => {
     handleSignIn,
     isLoading,
     emailInputError,
+    errorNotif,
+    resetErrorNotif,
   } = useSignInFormFacade({
     emailInputName: 'email',
     passwordInputName: 'password',
@@ -34,8 +37,27 @@ export const SignInForm = ({ buttonSize }) => {
         required
       />
       <Box pad={{ top: 'medium', bottom: 'small' }}>
-        <Button primary label="Войти" type="submit" size={buttonSize} />
+        {/* <Button primary label="Войти" type="submit" size={buttonSize} /> */}
+        <ProgressiveButton
+          primary
+          label="Войти"
+          loadingLabel="Авторизуем..."
+          isLoading={isLoading}
+          size={buttonSize}
+          type="submit"
+        />
       </Box>
+      {errorNotif && (
+        <SignInErrorNotification
+          message={errorNotif}
+          handleClose={resetErrorNotif}
+        />
+      )}
+      {/* <SignInErrorNotification
+        message="Неверный пароль. Повторите попытку или свяжитесь с поддержкой для восстановления доступа."
+        // message="Неверный пароль. Повторите попытку или свяжитесь с поддержкой для восстановления доступа. Неверный пароль. Повторите попытку или свяжитесь с поддержкой для восстановления доступа."
+        handleClose={resetErrorNotif}
+      /> */}
     </Form>
   )
 }

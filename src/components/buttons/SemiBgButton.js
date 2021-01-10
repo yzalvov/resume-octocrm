@@ -1,6 +1,5 @@
 import hexRgb from 'hex-rgb'
 import styled from 'styled-components'
-import { Text } from 'grommet'
 import { colors } from '../../theme-custom'
 
 function getRgba(hex, alfa) {

@@ -1,13 +1,15 @@
-import { Box, Button, Collapsible, Tabs, Tab, Text } from 'grommet'
+import { Box, Button, Collapsible, Tabs, Tab } from 'grommet'
 import { NewWindow } from 'grommet-icons'
 import { SectionHeading } from './SectionHeading'
 import { SectionFoldSwitch } from './SectionFoldSwitch'
+import { Spinner } from '../Spinner'
 
 export const SectionHeaderWithTabs = ({
   title,
   foldingSwitchParams,
   tabsParams,
   isSectionDisabled,
+  isLoading,
 }) => {
   const { isSectionOpen, handleSectionFold } = foldingSwitchParams
   const headingButtonProps = {
@@ -26,33 +28,39 @@ export const SectionHeaderWithTabs = ({
         title={title}
         {...headingButtonProps}
       />
-      {tabsParams && (
-        <Box flex align="end" pad={{ horizontal: 'medium' }}>
-          <Collapsible open={isSectionOpen}>
-            <Tabs activeIndex={0}>
-              <Tab title={tabsParams.titleTab1} />
-              <Button
-                as="div"
-                // onClick={tabsParams.handleClickTab2}
-                disabled
-                onClick={() => null}
-              >
-                <Tab
-                  title={tabsParams.titleTab2}
-                  icon={<NewWindow />}
-                  reverse
-                  // disabled
-                />
-              </Button>
-            </Tabs>
-          </Collapsible>
-        </Box>
+      {isLoading ? (
+        <Spinner />
+      ) : (
+        <>
+          {tabsParams && (
+            <Box flex align="end" pad={{ horizontal: 'medium' }}>
+              <Collapsible open={isSectionOpen}>
+                <Tabs activeIndex={0}>
+                  <Tab title={tabsParams.titleTab1} />
+                  <Button
+                    as="div"
+                    // onClick={tabsParams.handleClickTab2}
+                    disabled
+                    onClick={() => null}
+                  >
+                    <Tab
+                      title={tabsParams.titleTab2}
+                      icon={<NewWindow />}
+                      reverse
+                      // disabled
+                    />
+                  </Button>
+                </Tabs>
+              </Collapsible>
+            </Box>
+          )}
+          <SectionFoldSwitch
+            open={isSectionOpen}
+            onClick={handleSectionFold}
+            disabled={isSectionDisabled}
+          />
+        </>
       )}
-      <SectionFoldSwitch
-        open={isSectionOpen}
-        onClick={handleSectionFold}
-        disabled={isSectionDisabled}
-      />
     </Box>
   )
 }

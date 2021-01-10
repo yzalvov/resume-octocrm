@@ -10,8 +10,10 @@ import {
 } from './theme-custom'
 import { AppBar, ScreenWidthContainer, Footer } from './layout'
 import * as routes from './routes'
+import { withAuthentication as withAuthen } from './routes/withAuthentication'
+import { withAuthorization as withAuthor } from './routes/withAuthorization'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
-import GlobalContextProvider from './context'
+import { GlobalContextProvider } from './context'
 import {
   OfferScreen,
   PartnerDashboardScreen,
@@ -20,6 +22,7 @@ import {
   SignInScreen,
   VisitsHistoryScreen,
 } from './screens'
+import { FirebaseAuth } from './components/firebase'
 
 // Grommet dark background for the html tag. For overscrolls.
 const HtmlOverscrollBackround = createGlobalStyle`
@@ -37,6 +40,7 @@ function App() {
 
   return (
     <GlobalContextProvider>
+      <FirebaseAuth />
       <Grommet full theme={theme} background={background} key={background}>
         <HtmlOverscrollBackround background={background} />
         <ResponsiveContext.Consumer>
@@ -52,27 +56,27 @@ function App() {
                     <Route
                       exact
                       path={routes.DASHBOARD}
-                      component={PartnerDashboardScreen}
+                      component={withAuthor(PartnerDashboardScreen)}
                     />
                     <Route
                       exact
                       path={routes.SIGN_UP_OFFER}
-                      component={SignUpOfferScreen}
+                      component={withAuthen(SignUpOfferScreen)}
                     />
                     <Route
                       exact
                       path={routes.REVIEWS}
-                      component={ReviewsArchiveScreen}
+                      component={withAuthor(ReviewsArchiveScreen)}
                     />
                     <Route
                       exact
                       path={routes.SIGN_IN}
-                      component={SignInScreen}
+                      component={withAuthen(SignInScreen)}
                     />
                     <Route
                       exact
                       path={routes.VISITS}
-                      component={VisitsHistoryScreen}
+                      component={withAuthor(VisitsHistoryScreen)}
                     />
                   </Switch>
                 </Main>

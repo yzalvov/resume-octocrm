@@ -27,7 +27,7 @@ export const StatsWidget = ({ data, ...props }) => {
       <TertiaryRoundedContainer flex pad="none">
         <ColumnsContainer>
           <Column>
-            <StatsLine>Заработано</StatsLine>
+            <StatsLine>Оборот</StatsLine>
             <StatsLine color={secondaryColor}>Визитов</StatsLine>
             <StatsLine color={secondaryColor}>Посетителей</StatsLine>
           </Column>

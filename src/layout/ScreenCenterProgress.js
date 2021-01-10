@@ -1,28 +1,32 @@
-// import React from 'react'
-import { Heading } from 'grommet'
+import {
+  Heading,
+  // Layer
+} from 'grommet'
 import { Spinner } from '../components'
+import { FullHeightBox } from '../layout'
 import { useColorSchemeOption, SECONDARY_TEXT_COLOR } from '../theme-custom'
-import { ScreenCenterContainer } from './ScreenCenterContainer'
 
-export const ScreenCenterProgress = ({ label }) => {
+export const ScreenCenterProgress = ({ label = 'Подключаемся...' }) => {
   const color = useColorSchemeOption(SECONDARY_TEXT_COLOR)
+
+  // return (
+  //   <Layer position="center" full animation="fadeIn">
+  //     <FullHeightBox>
+  //       <Spinner color={color} size={label ? 'large' : 'xlarge'} />
+  //       <Heading color={color} as="p" level="4" style={{ fontWeight: 700 }}>
+  //         {label}
+  //       </Heading>
+  //     </FullHeightBox>
+  //   </Layer>
+  // )
   return (
-    <ScreenCenterContainer
-      direction="row"
-      justify="center"
-      gap="small"
-      style={{ marginTop: '-9vh' }}
-    >
-      <Spinner
-        color={color}
-        size={label ? 'large' : 'xlarge'}
-        // margin={{ top: 'xlarge' }}
-      />
+    <FullHeightBox>
+      <Spinner color={color} size={label ? 'large' : 'xlarge'} />
       {label && (
         <Heading color={color} as="p" level="4" style={{ fontWeight: 700 }}>
           {label}
         </Heading>
       )}
-    </ScreenCenterContainer>
+    </FullHeightBox>
   )
 }
