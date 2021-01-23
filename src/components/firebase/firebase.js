@@ -3,7 +3,7 @@ import 'firebase/auth'
 import 'firebase/firestore'
 import 'firebase/functions'
 // import 'firebase/storage'
-import { COLLECTIONS } from 'frontback-shared'
+import { COLLECTIONS } from 'octoshared-ts'
 import config from './config'
 
 const env = process.env.NODE_ENV
@@ -20,55 +20,32 @@ class Firebase {
     // this.storage = app.storage()
   }
 
-  serverTimestamp = app.firestore.FieldValue.serverTimestamp
-  serverDelete = app.firestore.FieldValue.delete
-  serverFromDate = app.firestore.Timestamp.fromDate
+  // firestore = app.firestore
 
   signIn({ email, password }) {
     return this.auth.signInWithEmailAndPassword(email, password)
   }
 
-  // isUserAdmin() {
-  //   return this.db
-  //     .doc(`${COLLECTIONS.admins}/${this.auth.currentUser.phoneNumber}`)
-  //     .get()
-  //     .then(snap => snap.exists)
-  // }
-
-  getPartnerCurrentVisitors() {
+  getPartnerCurrentVisits() {
     // return this.db.collection(`${COLLECTIONS[env].places}`).get()
     return this.db
-      .collection(`${COLLECTIONS[env].users}`)
-      .where('session', '!=', false)
-      .where('session.partnerId', '==', this.auth.currentUser.uid)
+      .collection(`${COLLECTIONS[env].visits}`)
+      .where('partnerId', '==', this.auth.currentUser.uid)
   }
   // firebase.functions.httpsCallable('visit-finishByPartner')({})
-  endVisitByPartner(props) {
+  finishVisit({ userId }) {
     // return this.db.collection(`${COLLECTIONS[env].places}`).get()
-    return this.functions.httpsCallable('visit-endByPartner')({
+    return this.functions.httpsCallable('visit-finishByPartner')({
       env,
-      ...props
+      userId
     })
   }
-  // getPlacesRef() {
-  //   // return this.db.collection(`${COLLECTIONS[env].places}`).get()
-  //   return this.db.collection(`${COLLECTIONS[env].places}`)
-  // }
 
-  // Profile methods
   getProfileRef() {
     return this.db.doc(
       `${ENV_COLLECTIONS.partners}/${this.auth.currentUser.uid}`
     )
   }
-
-  // // Place methods
-  // getPlaceDetails(id) {
-  //   return this.db.doc(`${ENV_COLLECTIONS.places}/${id}`).get()
-  // }
-  // getPlacesRef() {
-  //   return this.db.collection(`${ENV_COLLECTIONS.places}`)
-  // }
 }
 
 export const firebase = new Firebase()

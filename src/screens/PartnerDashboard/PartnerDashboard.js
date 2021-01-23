@@ -22,23 +22,23 @@ function handleTabClick(routerPath) {
 const reviewsTabsParams = {
   titleTab1: 'новые',
   titleTab2: 'архив',
-  handleClickTab2: () => handleTabClick(routes.REVIEWS),
+  handleClickTab2: () => handleTabClick(routes.REVIEWS)
 }
 const historyTabsParams = {
   titleTab1: 'активные',
   titleTab2: 'история',
-  handleClickTab2: () => handleTabClick(routes.VISITS),
+  handleClickTab2: () => handleTabClick(routes.VISITS)
 }
 
 export const PartnerDashboardScreen = () => {
   return (
     <Box gap="large" margin={{ vertical: 'xlarge' }}>
-      {/* <ThisMonthSection title="В этом месяце" />
+      <ThisMonthSection title="В этом месяце" />
       <ReviewsSection
         title="Отзывы"
         isSectionDisabled
         tabsParams={reviewsTabsParams}
-      /> */}
+      />
       <VisitsSection title="Визиты" tabsParams={historyTabsParams} />
     </Box>
   )

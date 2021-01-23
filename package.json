@@ -6,18 +6,24 @@
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
+    "@types/jest": "^26.0.20",
+    "@types/node": "^14.14.22",
+    "@types/react": "^17.0.0",
+    "@types/react-dom": "^17.0.0",
     "date-fns": "^2.16.1",
     "firebase": "^8.2.1",
     "framer-motion": "^3.1.4",
     "grommet": "^2.16.2",
     "grommet-icons": "^4.5.0",
     "hex-rgb": "^4.2.0",
+    "octoshared-ts": "./functions/src/octoshared-ts",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.1",
     "styled-components": "^5.2.1",
     "typeface-inter": "^3.15.1",
+    "typescript": "^4.1.3",
     "web-vitals": "^0.2.4"
   },
   "scripts": {
@@ -26,7 +32,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "deploy-functions": "firebase deploy --only functions",
-    "functions:log": "firebase functions:log"
+    "functions:log": "firebase functions:log",
+    "deploy-firestore:rules": "firebase deploy --only firestore:rules"
   },
   "eslintConfig": {
     "extends": [
@@ -47,7 +54,6 @@
     ]
   },
   "devDependencies": {
-    "frontback-shared": "./functions/src/frontback-shared",
-    "typescript": "^4.1.3"
+    "firebase-admin": "^9.4.2"
   }
 }

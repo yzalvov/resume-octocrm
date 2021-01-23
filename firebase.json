@@ -3,6 +3,14 @@
     "predeploy": [
       "npm --prefix \"$RESOURCE_DIR\" run lint",
       "npm --prefix \"$RESOURCE_DIR\" run build"
-    ]
+    ],
+    "postdeploy": [
+      "say 'Enjoy your functions in a minute, my dear!'; date; sleep 30; say '30 seconds gone.'"
+    ],
+    "source": "functions"
+  },
+  "firestore": {
+    "rules": "firestore.rules",
+    "indexes": "firestore.indexes.json"
   }
 }

@@ -9,12 +9,12 @@ export const SectionHeaderWithTabs = ({
   foldingSwitchParams,
   tabsParams,
   isSectionDisabled,
-  isLoading,
+  isLoading
 }) => {
   const { isSectionOpen, handleSectionFold } = foldingSwitchParams
   const headingButtonProps = {
     disabled: isSectionDisabled,
-    onClick: isSectionDisabled ? () => null : handleSectionFold,
+    onClick: isSectionDisabled ? () => null : handleSectionFold
   }
   return (
     <Box
@@ -32,7 +32,7 @@ export const SectionHeaderWithTabs = ({
         <Spinner />
       ) : (
         <>
-          {tabsParams && (
+          {!isSectionDisabled && tabsParams && (
             <Box flex align="end" pad={{ horizontal: 'medium' }}>
               <Collapsible open={isSectionOpen}>
                 <Tabs activeIndex={0}>
@@ -55,7 +55,7 @@ export const SectionHeaderWithTabs = ({
             </Box>
           )}
           <SectionFoldSwitch
-            open={isSectionOpen}
+            open={!isSectionDisabled && isSectionOpen}
             onClick={handleSectionFold}
             disabled={isSectionDisabled}
           />

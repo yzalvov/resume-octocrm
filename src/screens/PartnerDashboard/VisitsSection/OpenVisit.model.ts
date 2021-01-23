@@ -1,51 +1,13 @@
 import { format, intervalToDuration } from 'date-fns'
-// import {} from 'firebase/firestore'
-
-//  interface FirestoreUserDoc {
-// }
-
-// export interface OpenVisitDetails {
-//   uid: string
-//   started: Date
-//   personDetails: {
-//     name: string
-//     phone: string
-//   }
-//   visitDetails: {
-//     startedDay: string
-//     startedTime: string
-//     sessionId: string
-//   }
-//   duration: {
-//     hours: string
-//     minutes: string
-//     seconds: string
-//   }
-// }
 
 export class OpenVisit {
-  userDoc: any
-  constructor(userDoc: any) {
-    this.userDoc = userDoc
+  doc: any
+  constructor(doc: any) {
+    this.doc = doc
   }
 
-  maskUserName() {
-    const name = this.userDoc.name
-    if (!name) return
-    const [first, second] = name.split(' ')
-    if (!second) return first
-    return `${first} ${second.substring(0, 1)}.`
-  }
-  maskPhoneNumber() {
-    const str = this.userDoc.phoneNumber
-    const [leftStr, rightStr] = [
-      str.substring(str.length - 4, str.length - 2),
-      str.substring(str.length - 2)
-    ]
-    return `+7 ••• ••• ${leftStr} ${rightStr}`
-  }
   maskVisitId() {
-    const string = this.uid
+    const string = this.doc.userId
     const [leftStr, rightStr] = [
       string.substring(0, 4),
       string.substring(string.length - 4)
@@ -53,42 +15,40 @@ export class OpenVisit {
     return `${leftStr}-${rightStr}`
   }
 
-  get uid() {
-    return this.userDoc.uid
+  get userId() {
+    return this.doc.userId
   }
   get started() {
-    return this.userDoc.session.started.toDate()
+    return this.doc.visitStarted.toDate()
   }
 
   get personDetails() {
     return {
-      name: this.maskUserName(),
-      phone: this.maskPhoneNumber()
+      name: this.doc.maskedUserName,
+      phone: this.doc.maskedUserPhone
     }
   }
 
   get visitDetails() {
-    const startedDT = this.userDoc.session.started.toDate()
+    const startedDT = this.doc.visitStarted.toDate()
     return {
       startedDay: format(startedDT, 'yyyy-MM-dd'),
       startedTime: format(startedDT, 'HH:mm'),
-      sessionId: this.maskVisitId()
+      maskedVisitId: this.maskVisitId()
     }
   }
 
   get duration() {
-    const startedDT = this.userDoc.session.started.toDate()
-    // return [0, 42]
+    const startedDT = this.doc.visitStarted.toDate()
     const { days = 0, hours: h = 0, minutes, seconds } = intervalToDuration({
       start: startedDT,
       end: Date.now()
     })
     const hours = days * 24 + h
-
     return { hours, minutes, seconds }
   }
 
-  get session() {
-    return this.userDoc.session
-  }
+  // get visit() {
+  //   return this.doc
+  // }
 }

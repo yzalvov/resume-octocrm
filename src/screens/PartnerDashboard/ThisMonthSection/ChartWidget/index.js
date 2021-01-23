@@ -1,7 +1,7 @@
 import { Box, Chart, Stack, Text } from 'grommet'
 import { format } from '../../../../components/date-fns'
-import { formatRub } from '../../../../helpers'
 import { useChartFacade } from './useChartFacade'
+import { formatNumString } from 'octoshared-ts'
 
 const ChartText = props => <Text size="small" weight="bold" {...props} />
 
@@ -11,7 +11,7 @@ export const ChartWidget = ({ data, ...props }) => {
   const chartProps = {
     size: { width: 'full', height: 'small' },
     bounds,
-    values,
+    values
     // overflow: true,
   }
 
@@ -54,7 +54,7 @@ export const ChartWidget = ({ data, ...props }) => {
                   <Box key={y} direction="row" align={align}>
                     {first || last ? null : (
                       <Box pad={{ horizontal: 'small' }}>
-                        <ChartText>{formatRub(y)} ₽</ChartText>
+                        <ChartText>{formatNumString(y)} ₽</ChartText>
                       </Box>
                     )}
                     <Box

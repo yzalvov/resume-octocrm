@@ -7,13 +7,13 @@ export const VisitsSection = ({ title, isSectionDisabled, tabsParams }) => {
     isLoading,
     openVisits,
     handleFinishVisit,
-    finishingUID,
+    finishingVisitId
   } = useOpenVisitsFacade()
   // console.log('openVisits', openVisits)
   const listProps = {
     list: openVisits,
     handleFinishVisit,
-    finishingUID,
+    finishingVisitId
   }
   return (
     <FoldingSection

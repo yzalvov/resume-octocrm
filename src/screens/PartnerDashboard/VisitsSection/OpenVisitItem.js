@@ -9,7 +9,11 @@ import { useInterval } from '../../../customHooks'
 
 const SECOND_OPACITY = 0.7
 
-export const OpenVisitItem = ({ visit, handleFinishVisit, finishingUID }) => {
+export const OpenVisitItem = ({
+  visit,
+  handleFinishVisit,
+  finishingVisitId
+}) => {
   const secondColor = useColorSchemeOption({
     light: 'dark-4',
     dark: 'status-unknown'
@@ -33,10 +37,9 @@ export const OpenVisitItem = ({ visit, handleFinishVisit, finishingUID }) => {
         onClick: () =>
           handleFinishVisit({
             name: visit.personDetails.name,
-            uid: visit.uid,
-            session: visit.session
+            userId: visit.userId
           }),
-        isLoading: finishingUID && finishingUID === visit.uid
+        isLoading: finishingVisitId && finishingVisitId === visit.userId
       }}
     >
       <Box direction="row" gap="large">
@@ -57,7 +60,7 @@ export const OpenVisitItem = ({ visit, handleFinishVisit, finishingUID }) => {
                   <Text size="inherit">{visit.visitDetails.startedTime}</Text>
                 </Box>
               }
-              secondText={`начало визита ${visit.visitDetails.sessionId}`}
+              secondText={`начало визита ${visit.visitDetails.maskedVisitId}`}
               secondColor={secondColor}
               secondOpacity={SECOND_OPACITY}
             />

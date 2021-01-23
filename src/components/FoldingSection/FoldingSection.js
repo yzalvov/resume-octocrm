@@ -10,7 +10,7 @@ export const FoldingSection = ({
   isSectionDisabled,
   children,
   tabsParams,
-  isLoading,
+  isLoading
 }) => {
   const [open, setOpen] = useState(true)
   function handleSectionFold() {
@@ -18,7 +18,7 @@ export const FoldingSection = ({
   }
   const foldingSwitchParams = {
     isSectionOpen: open,
-    handleSectionFold,
+    handleSectionFold
   }
   return (
     <FoldingSectionContainer pad={{ horizontal: 'medium' }}>

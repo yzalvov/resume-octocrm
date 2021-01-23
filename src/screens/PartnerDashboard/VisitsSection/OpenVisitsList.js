@@ -1,5 +1,4 @@
 import { Box } from 'grommet'
-
 import { OpenVisitItem } from './OpenVisitItem'
 
 // export const ANIM_PROPS = {
@@ -23,7 +22,11 @@ import { OpenVisitItem } from './OpenVisitItem'
 //   },
 // }
 
-export const OpenVisitsList = ({ list, handleFinishVisit, finishingUID }) => {
+export const OpenVisitsList = ({
+  list,
+  handleFinishVisit,
+  finishingVisitId
+}) => {
   return (
     <Box gap="small">
       {!list
@@ -32,7 +35,7 @@ export const OpenVisitsList = ({ list, handleFinishVisit, finishingUID }) => {
             return (
               <OpenVisitItem
                 key={index}
-                {...{ visit, handleFinishVisit, finishingUID }}
+                {...{ visit, handleFinishVisit, finishingVisitId }}
               />
             )
           })}
