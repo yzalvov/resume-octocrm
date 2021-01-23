@@ -2,7 +2,7 @@ import { Box, Heading } from 'grommet'
 import { TertiaryRoundedContainer } from '../../../../components'
 import { useColorSchemeOption } from '../../../../theme-custom'
 import { useStatsFacade } from './useStatsFacade'
-import { formatNumString } from 'octoshared-ts'
+import { formatNumString } from '@yzalvov/octoshared-ts'
 
 const ColumnsContainer = props => <Box direction="row" {...props} />
 const Column = props => (

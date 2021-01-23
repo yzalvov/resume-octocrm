@@ -1,7 +1,7 @@
 import { Box, Heading } from 'grommet'
 import { SecondaryRoundedContainer } from '../../components'
 import { SignInForm } from './SignInForm'
-import { FullHeightBox, ScreenCenterProgress } from '../../layout'
+import { FullHeightBox } from '../../layout'
 
 export const SignInScreen = () => {
   return (

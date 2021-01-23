@@ -3,7 +3,6 @@ import { Box, Collapsible } from 'grommet'
 import { FoldingSectionContainer } from './FoldingSectionContainer'
 import { SectionHeaderWithTabs } from './SectionHeaderWithTabs'
 import { SectionContent } from './SectionContent'
-import { Spinner } from '../Spinner'
 
 export const FoldingSection = ({
   title,

@@ -1,6 +1,6 @@
 // import React from 'react'
 import { Box } from 'grommet'
-import { Spinning, SpinningIOS14Style } from '../svg'
+import { SpinningIOS14Style } from '../svg'
 import { colors, byThemeTextHeight } from '../theme-custom'
 
 export const Spinner = ({ color, size, ...rest }) => {

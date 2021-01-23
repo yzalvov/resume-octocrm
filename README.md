@@ -11,4 +11,8 @@
 
 - Keep the code inside `functions/src/octoshared-ts`.
 - For the Functions import as usual.
-- For the React do `yarn add -D ./functions/src/octoshared-ts` and then `import { name } from 'octoshared-ts'`.
+- For the React do `yarn add -D ./functions/src/octoshared-ts` and then `import { name } from '@yzalvov/octoshared-ts'`.
+
+## To use octoshared-ts code
+
+- Cloud Functions can use private modules. [Detials](https://cloud.google.com/functions/docs/writing/specifying-dependencies-nodejs)

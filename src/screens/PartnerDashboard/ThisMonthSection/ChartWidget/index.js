@@ -1,7 +1,7 @@
 import { Box, Chart, Stack, Text } from 'grommet'
 import { format } from '../../../../components/date-fns'
 import { useChartFacade } from './useChartFacade'
-import { formatNumString } from 'octoshared-ts'
+import { formatNumString } from '@yzalvov/octoshared-ts'
 
 const ChartText = props => <Text size="small" weight="bold" {...props} />
 

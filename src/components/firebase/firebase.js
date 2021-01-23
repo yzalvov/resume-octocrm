@@ -3,7 +3,7 @@ import 'firebase/auth'
 import 'firebase/firestore'
 import 'firebase/functions'
 // import 'firebase/storage'
-import { COLLECTIONS } from 'octoshared-ts'
+import { COLLECTIONS } from '@yzalvov/octoshared-ts'
 import config from './config'
 
 const env = process.env.NODE_ENV
