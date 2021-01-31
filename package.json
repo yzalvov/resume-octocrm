@@ -10,7 +10,7 @@
     "@types/node": "^14.14.22",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
-    "@yzalvov/octoshared-ts": "latest",
+    "@yzalvov/octoshared-ts": "^0.1.6",
     "date-fns": "^2.16.1",
     "firebase": "^8.2.1",
     "framer-motion": "^3.1.4",
@@ -33,7 +33,8 @@
     "eject": "react-scripts eject",
     "deploy-functions": "firebase deploy --only functions",
     "functions:log": "firebase functions:log",
-    "deploy-firestore:rules": "firebase deploy --only firestore:rules"
+    "deploy-firestore:rules": "firebase deploy --only firestore:rules",
+    "updatesharedcode": "yarn add @yzalvov/octoshared-ts@latest"
   },
   "eslintConfig": {
     "extends": [

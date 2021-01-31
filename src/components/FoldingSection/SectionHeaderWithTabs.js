@@ -16,6 +16,7 @@ export const SectionHeaderWithTabs = ({
     disabled: isSectionDisabled,
     onClick: isSectionDisabled ? () => null : handleSectionFold
   }
+
   return (
     <Box
       direction="row"
@@ -39,15 +40,15 @@ export const SectionHeaderWithTabs = ({
                   <Tab title={tabsParams.titleTab1} />
                   <Button
                     as="div"
-                    // onClick={tabsParams.handleClickTab2}
-                    disabled
-                    onClick={() => null}
+                    onClick={tabsParams.handleClickTab2}
+                    // disabled
+                    // onClick={() => null}
                   >
                     <Tab
                       title={tabsParams.titleTab2}
                       icon={<NewWindow />}
                       reverse
-                      // disabled
+                      onClick={tabsParams.handleClickTab2}
                     />
                   </Button>
                 </Tabs>

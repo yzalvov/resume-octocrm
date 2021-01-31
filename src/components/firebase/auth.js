@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react'
+import { useContext, useEffect } from 'react'
 import { firebase } from './firebase'
 import { GlobalDispatchContext } from '../../context'
 
@@ -33,7 +33,7 @@ export function translateErrorMsg(code) {
         'Пользователь не найден. Если вводимые данные верны, свяжитесь с поддержкой. Возможно, доступ приостановлен.',
       // 'The password is invalid or the user does not have a password.',
       'auth/wrong-password':
-        'Неверный пароль. Повторите попытку или свяжитесь с поддержкой для восстановления доступа.',
+        'Неверный пароль. Повторите попытку или свяжитесь с поддержкой для восстановления доступа.'
     }[code] || 'Неизвестная ошибка. Свяжитесь с нами.'
   )
 }
@@ -43,7 +43,12 @@ export function boildownUser(data) {
   if (user) {
     // Keep only data needed
     const { phoneNumber, email, uid, displayName } = user
-    user = { phoneNumber, email, uid, displayName }
+    user = {
+      phoneNumber,
+      email,
+      uid,
+      displayName
+    }
   }
   return user
 }

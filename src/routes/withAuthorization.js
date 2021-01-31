@@ -1,6 +1,10 @@
 import React, { useContext, useEffect } from 'react'
-import { firebase } from '../components/firebase'
-import { GlobalDispatchContext, GlobalStateContext } from '../context'
+import { firebase, firebaseApp } from '../components/firebase'
+import {
+  GlobalDispatchContext,
+  GlobalStateContext,
+  useOperatorPlacesInContext
+} from '../context'
 import { withAuthentication as withAuthen } from './withAuthentication'
 import { ScreenCenterProgress } from '../layout'
 import { NoPartnerFallback } from '../components'
@@ -13,11 +17,12 @@ export const withAuthorization = Component => {
     // const [isLoading, setIsLoading] = useState(true)
     useEffect(() => {
       if (!auth.user) return
-      const unsub = firebase.getProfileRef().onSnapshot(
+      const unsub = firebase.operatorProfile().onSnapshot(
         snapshot => {
+          // console.log('operator profile: ', snapshot.data())
           dispatch({
             type: 'setProfile',
-            data: { ready: true, partner: snapshot.data() },
+            data: { isReady: true, operator: snapshot.data() }
           })
           // setIsLoading(false)
         },
@@ -27,13 +32,32 @@ export const withAuthorization = Component => {
       return () => {
         unsub()
         // Reset profile considering that withAuthen redirects to SignInScreen if user == null.
-        dispatch({ type: 'cleanProfile' })
+        dispatch({ type: 'clearProfile' })
       }
     }, [auth, dispatch])
 
-    return !profile.ready ? (
+    useOperatorPlacesInContext()
+
+    // // #testing
+    // useEffect(() => {
+    //   if (!auth.user) return
+    //   async function logOperatorCustomClaims() {
+    //     try {
+    //       const idTokenResult = await firebaseApp
+    //         .auth()
+    //         .currentUser.getIdTokenResult()
+    //       console.log('idTokenResult.claims', idTokenResult.claims)
+    //     } catch (error) {
+    //       console.error(error)
+    //     }
+    //   }
+
+    //   logOperatorCustomClaims()
+    // }, [auth])
+
+    return !profile.isReady ? (
       <ScreenCenterProgress />
-    ) : profile.partner ? (
+    ) : profile.operator ? (
       <Component {...props} />
     ) : (
       <NoPartnerFallback />

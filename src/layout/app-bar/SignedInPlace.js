@@ -1,23 +1,18 @@
 import { Box, Heading } from 'grommet'
 import { GrayText } from '../../components'
 
-const LINE_HEIGHT = 1.2
+const LINE_HEIGHT = 1.1
 
-export const SignedInCompany = ({
-  // companyName = 'ООО “Фитнес Бро”',
-  companyName,
-  companyEmail,
-  companyNameColor,
-}) => (
+export const SignedInPlace = ({ placeName, operatorEmail, placeNameColor }) => (
   <Box>
-    {companyName && (
+    {placeName && (
       <Heading
         as="span"
         level="5"
-        color={companyNameColor}
+        color={placeNameColor}
         style={{ fontWeight: 700, lineHeight: LINE_HEIGHT }}
       >
-        {companyName}
+        {placeName}
       </Heading>
     )}
     <GrayText
@@ -26,7 +21,7 @@ export const SignedInCompany = ({
       color="dark-4"
       style={{ letterSpacing: 'normal', lineHeight: LINE_HEIGHT }}
     >
-      {companyEmail}
+      {operatorEmail}
     </GrayText>
   </Box>
 )

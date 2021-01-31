@@ -20,32 +20,46 @@ class Firebase {
     // this.storage = app.storage()
   }
 
-  // firestore = app.firestore
+  firestore = app.firestore
 
   signIn({ email, password }) {
     return this.auth.signInWithEmailAndPassword(email, password)
   }
 
-  getPartnerCurrentVisits() {
-    // return this.db.collection(`${COLLECTIONS[env].places}`).get()
+  operatorProfile() {
+    return this.db.doc(
+      `${ENV_COLLECTIONS.partner_operators}/${this.auth.currentUser.uid}`
+    )
+  }
+
+  operatorPlaces({ operatorPlaceIds }) {
+    return this.db
+      .collection(`${COLLECTIONS[env].places}`)
+      .where(this.firestore.FieldPath.documentId(), 'in', operatorPlaceIds)
+  }
+
+  placeCurrentVisits({ placeId }) {
     return this.db
       .collection(`${COLLECTIONS[env].visits}`)
-      .where('partnerId', '==', this.auth.currentUser.uid)
+      .where('placeId', '==', placeId)
   }
-  // firebase.functions.httpsCallable('visit-finishByPartner')({})
+
   finishVisit({ userId }) {
-    // return this.db.collection(`${COLLECTIONS[env].places}`).get()
-    return this.functions.httpsCallable('visit-finishByPartner')({
+    return this.functions.httpsCallable('visit-finishByOperator')({
       env,
       userId
     })
   }
 
-  getProfileRef() {
-    return this.db.doc(
-      `${ENV_COLLECTIONS.partners}/${this.auth.currentUser.uid}`
-    )
+  placeVisitsHistory({ placeId, dateLeft, dateRight }) {
+    return this.db
+      .collection(`${COLLECTIONS[env].payment_records}`)
+      .where('placeId', '==', placeId)
+      .orderBy('visitEnded', 'desc')
+      .where('visitEnded', '>=', dateLeft)
+      .where('visitEnded', '<=', dateRight)
   }
 }
 
 export const firebase = new Firebase()
+export const firebaseApp = app

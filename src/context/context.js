@@ -18,7 +18,7 @@ function profileReducer(state, action) {
   switch (action.type) {
     case 'setProfile':
       return { ...state, ...action.data }
-    case 'cleanProfile':
+    case 'clearProfile':
       return {}
     default:
       return state
@@ -28,13 +28,13 @@ function profileReducer(state, action) {
 function mainReducer({ auth, profile }, action) {
   return {
     auth: authReducer(auth, action),
-    profile: profileReducer(profile, action),
+    profile: profileReducer(profile, action)
   }
 }
 
 const initialState = {
   auth: {},
-  profile: {},
+  profile: {}
 }
 
 export const GlobalContextProvider = ({ children }) => {

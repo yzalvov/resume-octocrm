@@ -1,5 +1,1 @@
-import { Heading } from 'grommet'
-
-export const VisitsHistoryScreen = () => (
-  <Heading>VisitsHistoryScreen Here</Heading>
-)
+export * from './VisitsHistory'

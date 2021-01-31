@@ -6,7 +6,7 @@ import {
   theme,
   useColorSchemeOption,
   themedColors,
-  GLOBAL_LETTER_SPACING,
+  GLOBAL_LETTER_SPACING
 } from './theme-custom'
 import { AppBar, ScreenWidthContainer, Footer } from './layout'
 import * as routes from './routes'
@@ -20,7 +20,7 @@ import {
   SignUpOfferScreen,
   ReviewsArchiveScreen,
   SignInScreen,
-  VisitsHistoryScreen,
+  VisitsHistoryScreen
 } from './screens'
 import { FirebaseAuth } from './components/firebase'
 

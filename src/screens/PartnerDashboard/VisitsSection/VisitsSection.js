@@ -19,7 +19,7 @@ export const VisitsSection = ({ title, isSectionDisabled, tabsParams }) => {
     <FoldingSection
       title={title}
       tabsParams={tabsParams}
-      isSectionDisabled={isLoading || isSectionDisabled}
+      isSectionDisabled={isSectionDisabled}
       isLoading={isLoading}
     >
       <OpenVisitsList {...listProps} />
