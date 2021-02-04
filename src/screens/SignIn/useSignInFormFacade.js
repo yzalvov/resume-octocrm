@@ -1,18 +1,15 @@
 import { useState } from 'react'
-import { useHistory } from 'react-router-dom'
 import { validateEmail } from './validateEmail'
 import { firebase, translateErrorMsg } from '../../components/firebase'
-import * as routes from '../../routes'
 
 export function useSignInFormFacade({
   emailInputName,
   passwordInputName,
-  emailErrorMsg,
+  emailErrorMsg
 }) {
-  const history = useHistory()
   const [formValue, setFormValue] = useState({
     [emailInputName]: '',
-    [passwordInputName]: '',
+    [passwordInputName]: ''
   })
   const [isLoading, setIsLoading] = useState()
   const [isEmailInvalid, setIsEmailInvalid] = useState()
@@ -33,17 +30,14 @@ export function useSignInFormFacade({
     }
     setIsLoading(true)
     try {
-      // console.log('value', value)
       const [email, password] = [
         value[emailInputName].replace(/\s/g, ''),
-        value[passwordInputName].replace(/\s/g, ''),
+        value[passwordInputName].replace(/\s/g, '')
       ]
       await firebase.signIn({ email, password })
-      // console.log('result', result)
-      history.push(routes.DASHBOARD)
+      // history.push(routes.DASHBOARD) // Handled by effect on SignInScreen.
     } catch (error) {
       console.log('handleSignIn error', error)
-      // alert(translateErrorMsg(error.code))
       setErrorNotif(translateErrorMsg(error.code))
       setIsLoading(false)
     }
@@ -56,6 +50,6 @@ export function useSignInFormFacade({
     isLoading,
     emailInputError: isEmailInvalid ? emailErrorMsg : undefined,
     errorNotif,
-    resetErrorNotif: () => setErrorNotif(null),
+    resetErrorNotif: () => setErrorNotif(null)
   }
 }

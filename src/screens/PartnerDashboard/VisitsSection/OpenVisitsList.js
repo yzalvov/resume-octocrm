@@ -25,7 +25,7 @@ import { OpenVisitItem } from './OpenVisitItem'
 export const OpenVisitsList = ({
   list,
   handleFinishVisit,
-  finishingVisitId
+  visitBeenFinished
 }) => {
   return (
     <Box gap="small">
@@ -35,7 +35,7 @@ export const OpenVisitsList = ({
             return (
               <OpenVisitItem
                 key={index}
-                {...{ visit, handleFinishVisit, finishingVisitId }}
+                {...{ visit, handleFinishVisit, visitBeenFinished }}
               />
             )
           })}

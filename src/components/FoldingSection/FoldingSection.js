@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Box, Collapsible } from 'grommet'
 import { FoldingSectionContainer } from './FoldingSectionContainer'
 import { SectionHeaderWithTabs } from './SectionHeaderWithTabs'
-import { SectionContent } from './SectionContent'
+import { SectionContent } from '../Section'
 
 export const FoldingSection = ({
   title,

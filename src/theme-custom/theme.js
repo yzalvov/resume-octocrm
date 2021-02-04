@@ -31,7 +31,9 @@ export const colors = { ...global.colors, ...theme.global.colors }
 export const themedColors = {
   systemGroupedBackground: { light: 'light-2', dark: 'dark-1' },
   secondarySystemGroupedBackground: { light: 'white', dark: 'dark-2' },
-  tertiarySystemGroupedBackground: { light: 'light-1', dark: 'dark-3' }
+  tertiarySystemGroupedBackground: { light: 'light-1', dark: 'dark-3' },
+  tertiaryButtonHoverBackground: { light: 'light-3', dark: 'dark-2' },
+  meterBackground: { light: 'light-4', dark: 'dark-4' }
 }
 
 export const SECONDARY_TEXT_COLOR = {

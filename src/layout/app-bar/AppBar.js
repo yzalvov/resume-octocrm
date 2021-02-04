@@ -1,5 +1,5 @@
 import { useContext } from 'react'
-import { Box, Collapsible, Text } from 'grommet'
+import { Box, Text } from 'grommet'
 import { Power } from 'grommet-icons'
 import { Button } from '../../components'
 import { LogoBrand } from './LogoBrand'
@@ -36,41 +36,46 @@ export const AppBar = ({ history }) => {
       <Button onClick={() => history.push(routes.DASHBOARD)}>
         <LogoBrand color={textGrayColor} />
       </Button>
-      <Collapsible open={isOperatorReady}>
-        {isOperatorReady && (
-          <Box direction="row" align="center" gap="xlarge">
-            <SignedInPlace
-              placeName={profile.currentPlace && profile.currentPlace.title}
-              operatorEmail={auth.user && auth.user.email}
-              placeNameColor={textGrayColor}
-            />
-            {/* <DropDownMenu /> */}
-            <SignOutHandler>
-              <Box elevation="xxsmall" round>
-                <Button
-                  primary
-                  color={buttonGrayColor}
-                  icon={
-                    <Power
-                      size="19"
-                      color={textGrayColor}
-                      style={{ marginTop: -2 }}
-                    />
-                  }
-                  label={
-                    <Text size="small" color={textGrayColor}>
-                      Выйти
-                    </Text>
-                  }
-                  size="small"
-                  gap="xsmall"
-                  onClick={() => null}
-                />
-              </Box>
-            </SignOutHandler>
-          </Box>
-        )}
-      </Collapsible>
+      {/* <Collapsible open={isOperatorReady}> */}
+      {isOperatorReady && (
+        <Box
+          direction="row"
+          align="center"
+          gap="xlarge"
+          animation={['slideDown', 'fadeIn']}
+        >
+          <SignedInPlace
+            placeName={profile.currentPlace && profile.currentPlace.title}
+            operatorEmail={auth.user && auth.user.email}
+            placeNameColor={textGrayColor}
+          />
+          {/* <DropDownMenu /> */}
+          <SignOutHandler>
+            <Box elevation="xxsmall" round>
+              <Button
+                primary
+                color={buttonGrayColor}
+                icon={
+                  <Power
+                    size="19"
+                    color={textGrayColor}
+                    style={{ marginTop: -2 }}
+                  />
+                }
+                label={
+                  <Text size="small" color={textGrayColor}>
+                    Выйти
+                  </Text>
+                }
+                size="small"
+                gap="xsmall"
+                onClick={() => null}
+              />
+            </Box>
+          </SignOutHandler>
+        </Box>
+      )}
+      {/* </Collapsible> */}
     </Box>
   )
 }

@@ -1,3 +1,5 @@
 import { PaymentRecord } from '@yzalvov/octoshared-ts'
 
-export type VisitsHistory = PaymentRecord[]
+export interface PaymentRecordWithId extends PaymentRecord {
+  paymentRecordId: string
+}

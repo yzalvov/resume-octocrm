@@ -5,6 +5,7 @@ import 'firebase/functions'
 // import 'firebase/storage'
 import { COLLECTIONS } from '@yzalvov/octoshared-ts'
 import config from './config'
+import { endOfDay, startOfDay } from 'date-fns'
 
 const env = process.env.NODE_ENV
 const ENV_COLLECTIONS = COLLECTIONS[env] || COLLECTIONS.development
@@ -51,13 +52,13 @@ class Firebase {
     })
   }
 
-  placeVisitsHistory({ placeId, dateLeft, dateRight }) {
+  placeVisitsHistory({ placeId, periodDates }) {
     return this.db
       .collection(`${COLLECTIONS[env].payment_records}`)
       .where('placeId', '==', placeId)
       .orderBy('visitEnded', 'desc')
-      .where('visitEnded', '>=', dateLeft)
-      .where('visitEnded', '<=', dateRight)
+      .where('visitEnded', '>=', startOfDay(periodDates[0]))
+      .where('visitEnded', '<=', endOfDay(periodDates[1]))
   }
 }
 

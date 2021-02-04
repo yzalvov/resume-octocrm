@@ -12,7 +12,7 @@ const SECOND_OPACITY = 0.7
 export const OpenVisitItem = ({
   visit,
   handleFinishVisit,
-  finishingVisitId
+  visitBeenFinished
 }) => {
   const secondColor = useColorSchemeOption({
     light: 'dark-4',
@@ -39,7 +39,7 @@ export const OpenVisitItem = ({
             name: visit.personDetails.name,
             userId: visit.userId
           }),
-        isLoading: finishingVisitId && finishingVisitId === visit.userId
+        isLoading: visitBeenFinished && visitBeenFinished === visit.userId
       }}
     >
       <Box direction="row" gap="large">
@@ -53,7 +53,6 @@ export const OpenVisitItem = ({
         <Box direction="row" gap="large" width="68%">
           <Box align="center">
             <VisitsTextColumn
-              // mainText={visit.visitDetails.startedStr}
               mainText={
                 <Box direction="row" gap="small">
                   <Text size="inherit">{visit.visitDetails.startedDay}</Text>

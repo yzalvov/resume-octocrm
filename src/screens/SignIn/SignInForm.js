@@ -4,7 +4,7 @@ import { FormInput } from './FormInput'
 import { useSignInFormFacade } from './useSignInFormFacade'
 import { SignInErrorNotification } from './SignInErrorNotification'
 
-export const SignInForm = ({ buttonSize }) => {
+export const SignInForm = ({ buttonSize = undefined }) => {
   const {
     formValue,
     setFormValue,
@@ -12,11 +12,11 @@ export const SignInForm = ({ buttonSize }) => {
     isLoading,
     emailInputError,
     errorNotif,
-    resetErrorNotif,
+    resetErrorNotif
   } = useSignInFormFacade({
     emailInputName: 'email',
     passwordInputName: 'password',
-    emailErrorMsg: 'Исправьте email',
+    emailErrorMsg: 'Исправьте email'
   })
   return (
     <Form value={formValue} onChange={setFormValue} onSubmit={handleSignIn}>

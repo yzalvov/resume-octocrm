@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from 'react'
-import { firebase, firebaseApp } from '../components/firebase'
+import { firebase } from '../components/firebase'
 import {
   GlobalDispatchContext,
   GlobalStateContext,

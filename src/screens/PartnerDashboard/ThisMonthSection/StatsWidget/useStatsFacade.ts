@@ -1,6 +1,6 @@
-import { VisitsHistory } from '../../../../models/payment-records.model'
+import { PaymentRecordWithId } from '../../../../models'
 
-export function useStatsFacade(data: VisitsHistory) {
+export function useStatsFacade(data: PaymentRecordWithId[]) {
   return {
     earnings: countEarnings(data),
     visits: data.length,
@@ -8,7 +8,7 @@ export function useStatsFacade(data: VisitsHistory) {
   }
 }
 
-function countVisitors(list: VisitsHistory) {
+function countVisitors(list: PaymentRecordWithId[]) {
   const visitorMap = new Map()
   for (const item of list) {
     const counter = visitorMap.get(item.userId)
@@ -17,7 +17,7 @@ function countVisitors(list: VisitsHistory) {
   return visitorMap.size
 }
 
-function countEarnings(list: VisitsHistory) {
+function countEarnings(list: PaymentRecordWithId[]) {
   const total = list.reduce((accum, item) => accum + item.visitCost, 0)
   return Number(total.toFixed(2))
 }

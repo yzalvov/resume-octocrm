@@ -9,7 +9,8 @@ export const Footer = props => {
   return (
     <GrommetFooter pad={{ vertical: 'medium', ...PAGE_SIDE_GAP }}>
       <FooterItem>
-        © &nbsp;{new Date().getFullYear()}&nbsp; Symbiotic LLC
+        {/* © &nbsp;{new Date().getFullYear()}&nbsp; Symbiotic LLC */}©{' '}
+        {new Date().getFullYear()} Symbiotic LLC
       </FooterItem>
       <Box direction="row" gap="large">
         <FooterItem>Оферта</FooterItem>

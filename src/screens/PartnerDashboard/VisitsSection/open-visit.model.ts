@@ -1,4 +1,5 @@
 import { format, intervalToDuration } from 'date-fns'
+import { maskedFirestoreDocId } from '../../../components'
 
 export class OpenVisit {
   doc: any
@@ -7,12 +8,7 @@ export class OpenVisit {
   }
 
   maskVisitId() {
-    const string = this.doc.userId
-    const [leftStr, rightStr] = [
-      string.substring(0, 4),
-      string.substring(string.length - 4)
-    ]
-    return `${leftStr}-${rightStr}`
+    return maskedFirestoreDocId(this.doc.userId)
   }
 
   get userId() {

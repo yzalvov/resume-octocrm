@@ -1,6 +1,7 @@
 // import styled from 'styled-components'
 import { Button } from './Button'
 import { Spinner } from '../Spinner'
+import { ButtonType } from 'grommet'
 
 const SpinnerIcon = () => (
   <Spinner
@@ -10,16 +11,25 @@ const SpinnerIcon = () => (
   />
 )
 
-export const ProgressiveButton = ({ isLoading, loadingLabel, ...props }) => {
+export interface ProgressiveButtonType extends ButtonType {
+  isLoading?: boolean
+  loadingLabel?: React.ReactNode
+}
+
+export const ProgressiveButton = ({
+  isLoading,
+  loadingLabel,
+  ...props
+}: ProgressiveButtonType) => {
   const moderatedProps = {
     ...props,
     ...(isLoading
       ? {
           icon: <SpinnerIcon />,
           label: loadingLabel,
-          onClick: () => null,
+          onClick: () => null
         }
-      : {}),
+      : {})
   }
   return <Button {...moderatedProps} />
 }

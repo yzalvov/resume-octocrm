@@ -7,13 +7,13 @@ import {
   endOfDay,
   isWithinInterval
 } from 'date-fns'
-import { VisitsHistory } from '../../../../models/payment-records.model'
+import { PaymentRecordWithId } from '../../../../models'
 import firebase from 'firebase'
 
 const LEVELS = 4
 const RUB_STEP = 1000
 
-export function useChartFacade(records: VisitsHistory) {
+export function useChartFacade(records: PaymentRecordWithId[]) {
   const [chartData, setChartData] = useState({})
   useEffect(() => {
     if (!records.length) return
@@ -54,7 +54,7 @@ export function useChartFacade(records: VisitsHistory) {
   return chartData
 }
 
-function getByDayTotals(records: VisitsHistory) {
+function getByDayTotals(records: PaymentRecordWithId[]) {
   const [start, end] = getLeftRightDates(records)
   const dateList = eachDayOfInterval({ start, end })
   return dateList.map(date =>
@@ -66,7 +66,7 @@ function getByDayTotals(records: VisitsHistory) {
   )
 }
 
-const getDayRecords = (date: Date, records: VisitsHistory) => {
+const getDayRecords = (date: Date, records: PaymentRecordWithId[]) => {
   const [start, end] = [startOfDay(date), endOfDay(date)]
   return records.filter(item =>
     isWithinInterval(
@@ -76,7 +76,7 @@ const getDayRecords = (date: Date, records: VisitsHistory) => {
   )
 }
 
-const getLeftRightDates = (records: VisitsHistory) => {
+const getLeftRightDates = (records: PaymentRecordWithId[]) => {
   const dtList = records.map(item =>
     (item.paymentMade as firebase.firestore.Timestamp).toDate()
   )

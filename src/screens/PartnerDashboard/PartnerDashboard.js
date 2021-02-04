@@ -1,9 +1,8 @@
-import { Box } from 'grommet'
 import { ThisMonthSection } from './ThisMonthSection'
 import { ReviewsSection } from './ReviewsSection'
 import { VisitsSection } from './VisitsSection'
 import * as routes from '../../routes'
-// import { ScreenCenterProgress } from '../../layout'
+import { PageContentContainer } from '../../layout'
 
 const PLACE_ID = 'tB2oNxV24u25Ba1wGwZz' // #testing
 
@@ -32,7 +31,7 @@ const historyTabsParams = {
 
 export const PartnerDashboardScreen = () => {
   return (
-    <Box gap="large" margin={{ vertical: 'xlarge' }}>
+    <PageContentContainer>
       <ThisMonthSection title="В этом месяце" />
       <ReviewsSection
         title="Отзывы"
@@ -40,7 +39,7 @@ export const PartnerDashboardScreen = () => {
         tabsParams={reviewsTabsParams}
       />
       <VisitsSection title="Визиты" tabsParams={historyTabsParams} />
-    </Box>
+    </PageContentContainer>
   )
   // return <ScreenCenterProgress />
 }

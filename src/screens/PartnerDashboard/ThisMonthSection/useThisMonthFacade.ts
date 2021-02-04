@@ -1,22 +1,23 @@
 import { useState, useEffect } from 'react'
-import { firebase } from '../../../components/firebase'
 import { PaymentRecord } from '@yzalvov/octoshared-ts'
-import { startOfMonth, endOfMonth } from 'date-fns'
+import { firebase } from '../../../components/firebase'
+import { PeriodDates } from '../../../models'
 
-const [dateLeft, dateRight] = [
-  startOfMonth(new Date()),
-  endOfMonth(new Date())
-  // new Date(2021, 0, 22)
-]
-
-export function useThisMonthFacade(args: { placeId: string }) {
+export function useThisMonthFacade(arg: {
+  placeId: string
+  initialPeriodDates: PeriodDates
+}) {
   const [isLoading, setIsLoading] = useState(true)
   const [paymentRecords, setVisitsHistory] = useState(
     [] as Array<PaymentRecord>
   )
   useEffect(() => {
+    if (!arg.placeId) return
     const unsub = firebase
-      .placeVisitsHistory({ dateLeft, dateRight, placeId: args.placeId })
+      .placeVisitsHistory({
+        placeId: arg.placeId,
+        periodDates: arg.initialPeriodDates
+      })
       .onSnapshot(
         snapshot => {
           const list: Array<PaymentRecord> = []
@@ -29,7 +30,7 @@ export function useThisMonthFacade(args: { placeId: string }) {
         error => console.error(error)
       )
     return unsub
-  }, [])
+  }, [arg.placeId, arg.initialPeriodDates])
 
   return { isLoading, paymentRecords }
 }

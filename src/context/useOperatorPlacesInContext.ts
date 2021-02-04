@@ -30,7 +30,7 @@ export function useOperatorPlacesInContext() {
       error => console.error(error)
     )
     return unsub
-  }, [profile.isReady])
+  }, [dispatch, profile.operator, profile.isReady])
 
   function setCurrentPlaceContext(chosenPlace: OperatorPlace) {
     dispatch({ type: 'setProfile', data: { currentPlace: chosenPlace } })

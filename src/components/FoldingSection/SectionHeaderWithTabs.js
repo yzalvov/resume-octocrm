@@ -1,6 +1,6 @@
 import { Box, Button, Collapsible, Tabs, Tab } from 'grommet'
 import { NewWindow } from 'grommet-icons'
-import { SectionHeading } from './SectionHeading'
+import { FoldingSectionHeading } from './FoldingSectionHeading'
 import { SectionFoldSwitch } from './SectionFoldSwitch'
 import { Spinner } from '../Spinner'
 
@@ -24,7 +24,7 @@ export const SectionHeaderWithTabs = ({
       justify="between"
       pad={{ vertical: 'small' }}
     >
-      <SectionHeading
+      <FoldingSectionHeading
         margin={{ vertical: 'medium' }}
         title={title}
         {...headingButtonProps}
