@@ -28,7 +28,6 @@ const TruncatedText = styled(Text).attrs({ trancate: true })``
 export const PaymentRecordColumns: ColumnConfig<PaymentRecordWithId>[] = [
   {
     primary: true,
-    // weight: '',
     property: 'paymentRecordId',
     header: 'ID визита',
     render: (d: PaymentRecordWithId) => (
@@ -66,7 +65,7 @@ export const PaymentRecordColumns: ColumnConfig<PaymentRecordWithId>[] = [
     header: 'Чек, ₽',
     align: 'end',
     render: (d: PaymentRecordWithId) => (
-      <Text weight="bold">{formatNumString(d.visitCost)}</Text>
+      <Text weight={600}>{formatNumString(d.visitCost)}</Text>
     ),
     search: true
   }

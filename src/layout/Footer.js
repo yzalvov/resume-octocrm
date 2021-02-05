@@ -1,20 +1,26 @@
 import { Box, Footer as GrommetFooter } from 'grommet'
 import { PAGE_SIDE_GAP } from '../theme-custom'
-import { GrayText } from '../components'
-// import { ScreenWidthContainer } from './ScreenWidthContainer'
+import { Button, GrayText, Link } from '../components'
+import * as routes from '../routes'
 
 const FooterItem = props => <GrayText size="small" weight={600} {...props} />
 
-export const Footer = props => {
+export const Footer = () => {
   return (
-    <GrommetFooter pad={{ vertical: 'medium', ...PAGE_SIDE_GAP }}>
-      <FooterItem>
-        {/* © &nbsp;{new Date().getFullYear()}&nbsp; Symbiotic LLC */}©{' '}
-        {new Date().getFullYear()} Symbiotic LLC
-      </FooterItem>
-      <Box direction="row" gap="large">
-        <FooterItem>Оферта</FooterItem>
-        <FooterItem>Поддержка</FooterItem>
+    <GrommetFooter
+      pad={{ vertical: 'medium', ...PAGE_SIDE_GAP }}
+      align="baseline"
+    >
+      <FooterItem>{new Date().getFullYear()} Symbiotic LLC</FooterItem>
+      <Box direction="row" gap="large" align="baseline">
+        <Link to={routes.OFFER}>
+          <FooterItem>Оферта</FooterItem>
+        </Link>
+        <Button
+          label={<FooterItem>Поддержка</FooterItem>}
+          plain
+          href="mailto:support@octopass.ru"
+        />
       </Box>
     </GrommetFooter>
   )

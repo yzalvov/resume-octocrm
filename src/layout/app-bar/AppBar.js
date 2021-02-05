@@ -34,7 +34,7 @@ export const AppBar = ({ history }) => {
       margin={PAGE_SIDE_GAP}
     >
       <Button onClick={() => history.push(routes.DASHBOARD)}>
-        <LogoBrand color={textGrayColor} />
+        <LogoBrand color={textGrayColor} height={28} />
       </Button>
       {/* <Collapsible open={isOperatorReady}> */}
       {isOperatorReady && (

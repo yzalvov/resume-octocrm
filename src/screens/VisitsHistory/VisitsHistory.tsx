@@ -47,7 +47,9 @@ export const VisitsHistoryScreen: React.FC<VisitHistryScreenProps> = ({
               />
               <SearchBox records={paymentRecords} />
             </Box>
-            <PaymentRecordsTable records={paymentRecords} />
+            {!paymentRecords.length ? null : (
+              <PaymentRecordsTable records={paymentRecords} />
+            )}
           </Box>
         )}
       </Section>

@@ -12,12 +12,10 @@ export const PaymentRecordsTable = (arg: {
   return (
     <Box height={{ max: '60vh' }} overflow="scroll">
       <DataTable
-        pin
-        // size="medium"
-        // fill
         columns={PaymentRecordColumns}
         data={arg.records}
         sortable
+        pin
         sort={{
           property: 'visitEnded',
           direction: 'desc'

@@ -8,7 +8,7 @@ export const FoldingSection = ({
   title,
   isSectionDisabled,
   children,
-  tabsParams,
+  tabsParams = undefined,
   isLoading
 }) => {
   const [open, setOpen] = useState(true)

@@ -11,6 +11,8 @@ import { Devider } from './Devider'
 import { useInterval } from '../../../customHooks'
 import { format } from 'date-fns'
 import { PeriodDates, SetPeriodDates } from '../../../models'
+import { DateDelimeterIcon } from './DateDelimeterIcon'
+import { RangeButtonLabel } from './RangeButtonLabel'
 
 const COUNTDOWN_INIT_MS = 4000
 const COUNTDOWN_STEP_MS = 20
@@ -48,8 +50,8 @@ export const DateRangeSelect = (prop: {
   }
 
   function resetInput() {
-    setIsSubmitBtnVisible(false)
     setMSLeft(null)
+    setIsSubmitBtnVisible(false)
   }
 
   const handleSubmit = () => {
@@ -62,17 +64,26 @@ export const DateRangeSelect = (prop: {
   }
 
   const onClickOutside = () => {
-    setMSLeft(COUNTDOWN_INIT_MS + COUNTDOWN_STEP_MS * 2)
-    setDropResetKey(Date.now())
+    setTimeout(() => {
+      // For the MeterDown not to blink.
+      setMSLeft(COUNTDOWN_INIT_MS + COUNTDOWN_STEP_MS * 2)
+      setDropResetKey(Date.now())
+    }, 10)
   }
 
   const [dropResetKey, setDropResetKey] = React.useState(Date.now())
-  const labelString = (s: string) => format(new Date(s), 'yyyy.MM.dd')
+  const labelString = (s: string) => format(new Date(s), 'yyyy-MM-dd')
 
   const label =
-    periodString[0] === periodString[1]
-      ? labelString(periodString[0])
-      : `${labelString(periodString[0])} - ${labelString(periodString[1])}`
+    periodString[0] === periodString[1] ? (
+      <RangeButtonLabel>{labelString(periodString[0])}</RangeButtonLabel>
+    ) : (
+      <Box direction="row" justify="center">
+        <RangeButtonLabel>{labelString(periodString[0])}</RangeButtonLabel>
+        <DateDelimeterIcon />
+        <RangeButtonLabel>{labelString(periodString[1])}</RangeButtonLabel>
+      </Box>
+    )
 
   const buttonVersionRestProps = {
     buttonProps: {

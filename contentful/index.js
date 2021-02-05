@@ -1,0 +1,3 @@
+const { CONTENTFUL_CREDENTIALS } = require('./credentials')
+
+console.log('CONTENTFUL_CREDENTIALS', CONTENTFUL_CREDENTIALS)

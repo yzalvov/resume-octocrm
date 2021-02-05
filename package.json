@@ -34,7 +34,8 @@
     "deploy-functions": "firebase deploy --only functions",
     "functions:log": "firebase functions:log",
     "deploy-firestore:rules": "firebase deploy --only firestore:rules",
-    "updatesharedcode": "yarn add @yzalvov/octoshared-ts@latest"
+    "updatesharedcode": "yarn add @yzalvov/octoshared-ts@latest",
+    "postinstall": "node contentful/index"
   },
   "eslintConfig": {
     "extends": [

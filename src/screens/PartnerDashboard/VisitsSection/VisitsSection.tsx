@@ -3,8 +3,13 @@ import { FoldingSection } from '../../../components'
 import { GlobalStateContext } from '../../../context'
 import { OpenVisitsList } from './OpenVisitsList'
 import { useOpenVisitsFacade } from './useOpenVisitsFacade'
+import { NoActiveVisitsNote } from './NoActiveVisitsNote'
 
-export const VisitsSection = ({ title, isSectionDisabled, tabsParams }) => {
+export const VisitsSection = (prop: {
+  title: string
+  isSectionDisabled?: boolean
+  tabsParams: any
+}) => {
   const { profile } = useContext(GlobalStateContext)
   // console.log(
   //   'profile.currentPlace && profile.currentPlace.placeId',
@@ -26,12 +31,16 @@ export const VisitsSection = ({ title, isSectionDisabled, tabsParams }) => {
   }
   return (
     <FoldingSection
-      title={title}
-      tabsParams={tabsParams}
-      isSectionDisabled={isSectionDisabled}
+      title={prop.title}
+      tabsParams={prop.tabsParams}
+      isSectionDisabled={prop.isSectionDisabled}
       isLoading={isLoading}
     >
-      <OpenVisitsList {...listProps} />
+      {openVisits.length ? (
+        <OpenVisitsList {...listProps} />
+      ) : (
+        <NoActiveVisitsNote note="Активных визитов нет." />
+      )}
     </FoldingSection>
   )
 }
