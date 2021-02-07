@@ -1,6 +1,6 @@
 import { Box } from 'grommet'
 import { startOfMonth, endOfMonth, format } from 'date-fns'
-import { FoldingSection, useOperatorFirstPlaceId } from '../../../components'
+import { FoldingSection, useOperatorDefaultPlaceId } from '../../../components'
 import { useThisMonthFacade } from './useThisMonthFacade'
 import { ChartWidget } from './ChartWidget'
 import { StatsWidget } from './StatsWidget'
@@ -16,7 +16,7 @@ export const ThisMonthSection = (prop: {
   title: string
   isSectionDisabled: boolean
 }) => {
-  const { placeId } = useOperatorFirstPlaceId()
+  const { placeId } = useOperatorDefaultPlaceId()
   const { paymentRecords, isLoading } = useThisMonthFacade({
     initialPeriodDates: INITIAL_PERIOD_DATES,
     placeId

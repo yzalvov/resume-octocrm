@@ -5,7 +5,7 @@ import { Clock, Logout } from 'grommet-icons'
 import { useColorSchemeOption } from '../../../theme-custom'
 import { SectionListItem } from '../../../components'
 import { VisitsTextColumn } from './VisitsTextColumn'
-import { useInterval } from '../../../customHooks'
+import { useInterval } from '../../../components'
 
 const SECOND_OPACITY = 0.7
 

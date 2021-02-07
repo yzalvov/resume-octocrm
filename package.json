@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@contentful/rich-text-react-renderer": "^14.1.2",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
@@ -11,9 +12,15 @@
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
     "@yzalvov/octoshared-ts": "^0.1.7",
+    "apollo-cache-inmemory": "^1.6.6",
+    "apollo-client": "^2.6.10",
+    "apollo-link-error": "^1.1.13",
+    "contentful": "^8.1.7",
     "date-fns": "^2.16.1",
     "firebase": "^8.2.1",
     "framer-motion": "^3.1.4",
+    "graphql": "^15.5.0",
+    "graphql-request": "^3.4.0",
     "grommet": "^2.16.2",
     "grommet-icons": "^4.5.0",
     "hex-rgb": "^4.2.0",
@@ -35,7 +42,8 @@
     "functions:log": "firebase functions:log",
     "deploy-firestore:rules": "firebase deploy --only firestore:rules",
     "updatesharedcode": "yarn add @yzalvov/octoshared-ts@latest",
-    "postinstall": "node contentful/index"
+    "postinstall": "yarn presync-contentful",
+    "presync-contentful": "npx tsc -p presync-contentful/tsconfig.json && node presync-contentful/lib"
   },
   "eslintConfig": {
     "extends": [

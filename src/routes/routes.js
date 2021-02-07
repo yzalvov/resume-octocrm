@@ -1,6 +1,6 @@
 export const DASHBOARD = '/'
-export const OFFER = '/offer'
 export const SIGN_IN = '/sign-in'
 export const SIGN_UP_OFFER = '/sign-up/:invitationId?'
 export const REVIEWS = '/reviews/:placeId?'
 export const VISITS = '/visits/:placeId?'
+export * from './contentful.json.routes'

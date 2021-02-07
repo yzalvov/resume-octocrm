@@ -11,7 +11,7 @@ export const Footer = () => {
       pad={{ vertical: 'medium', ...PAGE_SIDE_GAP }}
       align="baseline"
     >
-      <FooterItem>{new Date().getFullYear()} Symbiotic LLC</FooterItem>
+      <FooterItem>© {new Date().getFullYear()} Symbiotic LLC</FooterItem>
       <Box direction="row" gap="large" align="baseline">
         <Link to={routes.OFFER}>
           <FooterItem>Оферта</FooterItem>
@@ -19,7 +19,7 @@ export const Footer = () => {
         <Button
           label={<FooterItem>Поддержка</FooterItem>}
           plain
-          href="mailto:support@octopass.ru"
+          href="mailto:partner@octopass.ru"
         />
       </Box>
     </GrommetFooter>
