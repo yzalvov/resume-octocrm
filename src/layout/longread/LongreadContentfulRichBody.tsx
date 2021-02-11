@@ -29,6 +29,9 @@ const BodyContainer = styled.div`
   & p {
     margin-block-start: 1em;
     margin-block-end: 1em;
+    & b {
+      font-weight: 600;
+    }
   }
   & a {
     ${CSStextLink}
@@ -49,16 +52,12 @@ const BodyContainer = styled.div`
       }
       & p {
         margin: 0;
-        & b {
-          color: black;
-          font-weight: 500;
-        }
       }
     }
   }
 `
 
-export const ContentfulRichBody = (prop: { document: Document }) => {
+export const LongreadContentfulRichBody = (prop: { document: Document }) => {
   const body = documentToReactComponents(prop.document)
   return <BodyContainer>{body}</BodyContainer>
 }

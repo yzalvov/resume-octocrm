@@ -5,7 +5,7 @@ import {
   LongreadSpaModel,
   LongreadPaperContainer,
   LongreadStickyHeader,
-  ContentfulRichBody,
+  LongreadContentfulRichBody,
   LongreadPageContentContainer
 } from '../../layout/longread'
 import jsonContent from '../../data/offer.json'
@@ -20,7 +20,7 @@ export const OfferScreen = () => {
           {...{ title, subtitle }}
           containerProp={{ pad: { top: 'small', bottom: 'xsmall' } }}
         />
-        <ContentfulRichBody document={body as Document} />
+        <LongreadContentfulRichBody document={body as Document} />
         <Box pad={{ top: 'medium', bottom: 'small' }}>
           <Text size="small" weight={600}>
             Данная редакция действует от {date} г.

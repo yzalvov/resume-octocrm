@@ -6,24 +6,9 @@ import { PaymentRecordWithId } from '../../../models'
 import { maskedFirestoreDocId } from '../../../components'
 import styled from 'styled-components'
 
-const TruncatedText = styled(Text).attrs({ trancate: true })``
+const DATE_TIME_FORMAT = 'yyyy-MM-dd HH:mm'
 
-// const DateTimeStretchedString = (prop: {
-//   timestamp: firebase.firestore.Timestamp
-// }) => {
-//   const date = prop.timestamp.toDate()
-//   return (
-//     <Box
-//       gap="small"
-//       direction="row"
-//       justify="between"
-//       pad={{ right: 'medium' }}
-//     >
-//       <Text>{format(date, 'yyyy-MM-dd')}</Text>
-//       <TruncatedText>{format(date, 'hh:mm')}</TruncatedText>
-//     </Box>
-//   )
-// }
+const TruncatedText = styled(Text).attrs({ trancate: true })``
 
 export const PaymentRecordColumns: ColumnConfig<PaymentRecordWithId>[] = [
   {
@@ -46,9 +31,8 @@ export const PaymentRecordColumns: ColumnConfig<PaymentRecordWithId>[] = [
     header: 'Начало',
     render: (d: PaymentRecordWithId) => (
       <TruncatedText>
-        {format(d.visitStarted.toDate(), 'yyyy-MM-dd hh:mm')}
+        {format(d.visitStarted.toDate(), DATE_TIME_FORMAT)}
       </TruncatedText>
-      // <DateTimeStretchedString timestamp={d.visitStarted} />
     )
   },
   {
@@ -56,7 +40,7 @@ export const PaymentRecordColumns: ColumnConfig<PaymentRecordWithId>[] = [
     header: 'Окончание',
     render: (d: PaymentRecordWithId) => (
       <TruncatedText>
-        {format(d.visitEnded.toDate(), 'yyyy-MM-dd hh:mm')}
+        {format(d.visitEnded.toDate(), DATE_TIME_FORMAT)}
       </TruncatedText>
     )
   },
