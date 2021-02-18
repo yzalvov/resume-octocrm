@@ -34,3 +34,5 @@ yarn-error.log*
 
 lib/
 src/data
+
+firestore.rules
