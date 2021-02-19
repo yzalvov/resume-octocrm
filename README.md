@@ -1,3 +1,6 @@
+![Day/night themes for octoCRM](github-demo-octocrm.png)
+
+
 # How to set new partner + operator + place manually
 
 ## 1. Create new partner
